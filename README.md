@@ -1,15 +1,16 @@
-# Buildwise · Construction Estimator
+# Build Estimator
 
-A single-page web app that estimates construction cost, materials, man-hours, skilled workers per trade and water needs, from foundation to finish. Rates follow the Tamil Nadu PWD Schedule of Rates 2025-26 where marked; all other rates and work norms are illustrative.
+React + Vite app: construction cost, materials (base to finished), man-hours, workers per trade and water needs, plus Projects, Measurements, PWD rate references, Documents and Reports screens.
 
-No build step and no dependencies: everything is in `index.html`.
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # static output in dist/
+```
 
-## Run locally
-Open `index.html` in a browser, or run `python3 -m http.server 8000` and visit http://localhost:8000.
+## Structure
+- `src/engine/calc.js` pure estimating function (no DOM); `src/data/` rates, norms and project-type multipliers.
+- `src/views/` one component per screen; `src/styles.css` single neutral light theme.
+- State is saved in the browser (localStorage). Push to `main` to deploy via the GitHub Pages workflow (Settings → Pages → Source: GitHub Actions).
 
-## Deploy
-A GitHub Pages workflow is included. After pushing, go to **Settings → Pages → Source: GitHub Actions**.
-
-## Notes
-- Indicative estimates only; not a quotation or engineering advice.
-- Edits made under **Customize** are stored in the browser (localStorage), not in the repo.
+Indicative estimates only. Rates marked TN PWD SOR follow the Schedule of Rates 2025-26; all other rates and norms are illustrative.
